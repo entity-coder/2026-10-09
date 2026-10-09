@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">FlashDecks</string>
+
+    <!-- Toolbar titles -->
+    <string name="title_decks">Decks</string>
+    <string name="title_quiz">Quiz</string>
+    <string name="title_result">Result</string>
+
+    <!-- Deck list -->
+    <string name="empty_decks">No decks yet.\nTap + to create your first deck.</string>
+    <string name="dialog_new_deck_title">New deck</string>
+    <string name="deck_name_hint">Deck name</string>
+    <string name="not_quizzed">Not quizzed yet</string>
+    <string name="best_score">Best: %1$d%%</string>
+
+    <!-- Deck detail -->
+    <string name="quizzes_taken">%1$d taken</string>
+    <string name="empty_cards">No cards yet.\nTap + to add your first card.</string>
+    <string name="action_start_quiz">Start quiz</string>
+    <string name="quiz_needs_cards">Add at least one card to start a quiz.</string>
+    <string name="dialog_rename_deck_title">Rename deck</string>
+    <string name="dialog_delete_deck_title">Delete deck?</string>
+    <string name="dialog_delete_deck_message">Delete \"%1$s\" and all its cards? This cannot be undone.</string>
+
+    <!-- Card editor -->
+    <string name="dialog_add_card_title">Add card</string>
+    <string name="dialog_edit_card_title">Edit card</string>
+    <string name="card_front_hint">Front</string>
+    <string name="card_back_hint">Back</string>
+    <string name="error_empty_card">Both sides of the card need text.</string>
+    <string name="dialog_delete_card_title">Delete card?</string>
+    <string name="dialog_delete_card_message">Delete this card? This cannot be undone.</string>
+
+    <!-- Quiz -->
+    <string name="quiz_progress">Card %1$d of %2$d</string>
+    <string name="quiz_tap_to_reveal">Tap the card to reveal the answer</string>
+    <string name="quiz_got_it_right">I got it right</string>
+    <string name="quiz_got_it_wrong">I got it wrong</string>
+    <string name="quiz_complete">Quiz complete!</string>
+    <string name="quiz_score_value">%1$d%%</string>
+    <string name="quiz_score_detail">%1$d of %2$d correct</string>
+    <string name="quiz_new_best">★ New best score!</string>
+    <string name="quiz_retry">Retry</string>
+    <string name="quiz_done">Done</string>
+
+    <!-- Theme -->
+    <string name="theme_system">System default</string>
+    <string name="theme_light">Light</string>
+    <string name="theme_dark">Dark</string>
+
+    <!-- Generic actions -->
+    <string name="action_add">Add</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_save">Save</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_rename">Rename</string>
+
+    <!-- Accessibility -->
+    <string name="cd_add_deck">Add deck</string>
+    <string name="cd_add_card">Add card</string>
+    <string name="cd_quiz_card">Flashcard. Tap to reveal the answer.</string>
+
+    <plurals name="cards_count">
+        <item quantity="one">%d card</item>
+        <item quantity="other">%d cards</item>
+    </plurals>
+</resources>
