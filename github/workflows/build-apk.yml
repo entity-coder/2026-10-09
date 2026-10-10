@@ -1,0 +1,42 @@
+name: Build APK
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# The release-upload step needs write access; GitHub's default token is read-only.
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Gradle 8.7
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          gradle-version: "8.7"
+
+      - name: Build debug APK
+        run: gradle assembleDebug --no-daemon
+
+      - name: Rename APK
+        run: mv app/build/outputs/apk/debug/app-debug.apk FlashDecks-v1.1.apk
+
+      - name: Publish to rolling release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: apk-latest
+          name: "Latest APK"
+          body: "Debug build of FlashDecks v1.1 (home-screen widget included). Install directly on your phone — Android will show an 'unknown developer' prompt, which is normal for APKs outside the Play Store."
+          files: FlashDecks-v1.1.apk
