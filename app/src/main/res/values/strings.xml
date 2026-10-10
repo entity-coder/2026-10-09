@@ -65,4 +65,12 @@
         <item quantity="one">%d card</item>
         <item quantity="other">%d cards</item>
     </plurals>
+
+    <!-- Home-screen widget -->
+    <string name="widget_title">FlashDecks</string>
+    <string name="widget_next">Next</string>
+    <string name="widget_hint_question">Question — tap to reveal</string>
+    <string name="widget_hint_answer">Answer — tap to flip back</string>
+    <string name="widget_empty">No cards yet.\nOpen FlashDecks to add some.</string>
+    <string name="widget_description">A random flashcard on your home screen. Tap to flip, Next for another.</string>
 </resources>

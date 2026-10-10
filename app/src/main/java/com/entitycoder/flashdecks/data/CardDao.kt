@@ -18,6 +18,14 @@ interface CardDao {
     @Query("SELECT MAX(position) FROM cards WHERE deckId = :deckId")
     suspend fun maxPosition(deckId: Long): Int?
 
+    /** Random card across all decks — feeds the home-screen widget. */
+    @Query("SELECT * FROM cards ORDER BY RANDOM() LIMIT 1")
+    suspend fun randomCard(): Card?
+
+    /** Single card lookup, used when the widget re-renders its stored card. */
+    @Query("SELECT * FROM cards WHERE id = :cardId")
+    suspend fun getById(cardId: Long): Card?
+
     @Insert
     suspend fun insert(card: Card): Long
 

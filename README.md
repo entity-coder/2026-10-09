@@ -22,6 +22,10 @@ Room — there is no account, no sync, and no network access at all.
   activity starts (no theme flash).
 - **Fully offline** — the manifest declares zero permissions; the app never
   touches the network.
+- **Home-screen widget** — long-press the home screen → Widgets → FlashDecks
+  to pin a random flashcard. Tap the card to flip question/answer, hit Next
+  for another random card, tap the header to open the app. Each widget copy
+  keeps its own card; works fully offline off the same Room database.
 
 ## Tech stack
 
@@ -150,6 +154,17 @@ better call.
   data instead of migrating it — acceptable for v1, not for a shipped app
   with real users.
 
+**Why the widget reads Room directly instead of going through the app:**
+AppWidgetProvider callbacks run in a broadcast receiver, outside any Activity
+or ViewModel, so there is no lifecycle-safe scope to collect Flows. The
+provider instead calls the same `suspend` DAO queries (`randomCard()`,
+`getById()`) on `Dispatchers.IO` inside `goAsync()`, which keeps the
+broadcast alive until the work finishes. Per-widget state (current card id,
+front/back) lives in SharedPreferences keyed by widget id — simple,
+synchronous, and each widget copy stays independent. The trade-off: the
+widget can't *observe* the database, so if you edit a card in the app the
+widget only picks it up on its next flip/Next tap, not instantly.
+
 **How I'd extend it:**
 1. Spaced repetition — track per-card ease factors and schedule reviews.
 2. Timed quiz mode and multiple-choice mode for variety.
@@ -157,4 +172,5 @@ better call.
 4. Search across decks and tags on cards.
 5. Proper Room `Migration` objects instead of destructive fallback, plus an
    automated backup/export.
-6. A home-screen widget showing "cards due today".
+6. ~~A home-screen widget showing "cards due today".~~ Done in v1.1 — the
+   widget shows a random card from the whole collection with tap-to-flip.
