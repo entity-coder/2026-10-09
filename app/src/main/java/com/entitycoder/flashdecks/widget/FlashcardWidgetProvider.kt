@@ -91,7 +91,7 @@ class FlashcardWidgetProvider : AppWidgetProvider() {
                     val card = dao.randomCard()
                     if (card == null) {
                         renderEmpty(context, manager, widgetId)
-                        return
+                        return@launch
                     }
                     cardId = card.id
                     showingBack = false
@@ -105,7 +105,7 @@ class FlashcardWidgetProvider : AppWidgetProvider() {
                 if (card == null) {
                     prefs.edit().remove(keyCard(widgetId)).remove(keyBack(widgetId)).apply()
                     renderEmpty(context, manager, widgetId)
-                    return
+                    return@launch
                 }
 
                 prefs.edit()
